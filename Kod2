@@ -1,0 +1,49 @@
+  <div id="animacjatestowa1" class="test-block">Kliknij, a się powiększę</div>
+
+    <script>
+    $("#animacjatestowa1").on("click", function(){
+        $(this).animate({
+        width: "500px",
+        opacity: 0.4,
+        fontSize: "3em",
+        borderWidth: "10px"
+        }, 1500);
+    });
+    </script>
+
+<div id="animacjatestowa2" class="test-block">
+    Najedź kursorem, a się powiększę
+</div>
+
+<script>
+    $("#animacjatestowa2").on({
+        "mouseover": function() {
+            $(this).animate({
+                width: 300
+            }, 800);
+        },
+        "mouseout": function() {
+            $(this).animate({
+                width: 200
+            }, 800);
+        }
+    });
+</script>
+
+<div id="animacjatestowa3" class="test-block">
+    Klikaj, abym urósł
+</div>
+
+<script>
+    $("#animacjatestowa3").on("click", function(){
+        if (!$(this).is(":animated")) {
+            $(this).animate({
+                width: "+=50",
+                height: "+=10",
+                opacity: "+=0.1"
+            }, {
+                duration: 3000
+            });
+        }
+    });
+</script>
