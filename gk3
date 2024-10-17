@@ -1,0 +1,29 @@
+from PIL import Image
+import numpy as np
+
+def rysuj_ramke_szare(w, h, grub, kolor_ramki, kolor): #kolor od 0 do 255
+    t = (h, w)
+    tab = np.ones(t, dtype=np.uint8)
+    tab[:] = kolor_ramki  # wypełnienie tablicy szarym kolorem o wartości kolor_ramki
+    tab[grub:h-grub, grub:w-grub] = kolor  # wypełnienie podtablicy kolorem o wartości kolor
+    return Image.fromarray(tab)
+
+
+def rysuj_ramki_szare(w, h, grub,kolor_ramki,kolor):
+    t = (h, w)
+    tab = np.ones(t, dtype=np.uint8)
+    i=0
+    while(i*grub<h-i*grub):
+        if(i%2==0):
+            tab[i*grub:h-i*grub, i*grub: w - i*grub]=kolor_ramki
+            kolor_ramki+=5
+        else:
+            tab[i * grub:h - i * grub, i * grub: w - i * grub] = kolor
+        i+=1
+    return Image.fromarray(tab)
+
+#im_ramka = rysuj_ramke_szare(120, 60, 8, 100, 200).show()
+rysuj_ramki_szare(300,200,5,100,200).show()
+
+
+
